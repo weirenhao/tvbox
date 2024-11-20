@@ -2,7 +2,7 @@ name: Sync with upstream
 
 on:
   schedule:
-    - cron: '0 * * * *'  # 每小时运行一次，可以根据需要调整频率
+    - cron: '35 11 * * *'  # 每小时运行一次，可以根据需要调整频率
   push:
     branches:
       - master  # 只在 master 分支上触发

@@ -1,0 +1,29 @@
+name: Sync with qist/tvbox
+
+on:
+  schedule:
+    - cron: '0 * * * *' # 每小时运行一次，可以根据需要修改为其他频率
+  push:
+    branches:
+      - master
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - name: Add remote qist/tvbox
+        run: git remote add upstream https://github.com/qist/tvbox.git
+
+      - name: Fetch the latest changes from upstream
+        run: git fetch upstream
+
+      - name: Merge changes from upstream/master into master
+        run: |
+          git checkout master
+          git merge upstream/master --allow-unrelated-histories -m "Sync with upstream master"
+
+      - name: Push changes to weirenhao/tvbox
+        run: git push origin master

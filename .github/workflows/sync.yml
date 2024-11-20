@@ -15,7 +15,12 @@ jobs:
       # Checkout the current repository (weirenhao/tvbox)
       - name: Checkout the repository
         uses: actions/checkout@v3
-
+        
+      - name: Set up Git config
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
       # Add the upstream remote for qist/tvbox
       - name: Add upstream remote
         run: git remote add upstream https://github.com/qist/tvbox.git

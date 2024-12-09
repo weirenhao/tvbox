@@ -33,7 +33,7 @@ jobs:
       - name: Merge upstream/master into master
         run: |
           git checkout master
-          git merge upstream/master --allow-unrelated-histories --strategy=recursive --strategy-option=ours -m "Sync with upstream master"
+          git merge upstream/master --allow-unrelated-histories --strategy=recursive --strategy-option=theirs -m "Sync with upstream master"
 
 
         
